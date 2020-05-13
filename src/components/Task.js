@@ -31,7 +31,10 @@ export class Task extends Component {
 
                 </input>
 
-                <button style={btnDelete}>
+                <button
+                    style={btnDelete}
+                    onClick={this.props.deleteTask.bind(this, task.id)}
+                >
                     x
                     </button>
 
@@ -40,7 +43,7 @@ export class Task extends Component {
         )
     }
 
-    
+
 
 }
 
