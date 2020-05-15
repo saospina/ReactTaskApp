@@ -27,7 +27,10 @@ export class Task extends Component {
                 {task.done} -
                 {task.id}
 
-                <input type="checkbox">
+                <input
+                    type="checkbox"
+                    onChange={this.props.checkDone.bind(this, task.id)}
+                >
 
                 </input>
 
