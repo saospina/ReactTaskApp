@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import tasks from './sample/task.json';
 // Components
+import React, { Component } from 'react';
 import Tasks from './components/Tasks';
 import TaskForm from './components/TaskForm';
+import PostsService from './components/PostsService';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// css
+import './App.css';
+import tasks from './sample/task.json';
 
 
 
@@ -50,15 +53,38 @@ class App extends Component {
   render() {
     return (
       <div>
-        <TaskForm
-          addTask={this.addTask}>
+        <Router>
 
-        </TaskForm>
-        <Tasks
-          tasks={this.state.tasks}
-          deleteTask={this.deleteTask}
-          checkDone={this.checkDone}
-        />
+          <Link to="/">Home</Link>
+
+          <br></br>
+
+          <Link to="/post">Post</Link>
+          <Route
+            exact path="/"
+            render={() => {
+              return <div>
+                <TaskForm
+                  addTask={this.addTask}>
+
+                </TaskForm>
+                <Tasks
+                  tasks={this.state.tasks}
+                  deleteTask={this.deleteTask}
+                  checkDone={this.checkDone}
+                />
+              </div>
+
+            }}>
+
+          </Route>
+          <Route
+            path="/post"
+            component={PostsService}>
+
+          </Route>
+        </Router>
+
       </div>
     )
   }
